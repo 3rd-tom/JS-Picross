@@ -1,17 +1,16 @@
-/**
+/**==================================================================================0
 * @author       Thomas Gattenhof <tom@pixeltom.net>
 * @copyright    2015 Thomas Gattenhof
 */
 
-/**
+/**==================================================================================0
 * Control Class, holds important variables and methods for the game, outside of the large game js file
 * @param fillID:    Unique ID for fills, counts up each time one starts. This stops tiles from switching in and out of states as the mouse goes over.
 *                   They'll switch states once only
 *
 */
 
-/*globals Picross, game*/
-/*globals input*/
+/*globals Picross, game, console*/
 
 //===================================================================================0
 //---- Constructor for the class object
@@ -60,5 +59,22 @@ Picross.Control.prototype.CalculateRow = function (input) {
     }
     
     console.log(countArray);
+    return countArray;
 };
 
+//===================================================================================0
+//----
+//===================================================================================0
+Picross.Control.prototype.CalculateColumn = function (input, position) {
+    'use strict';
+    
+    var checkString, i;
+    
+    checkString = "";
+    
+    for (i = 0; i < input.length; i += 1) {
+        checkString += input[i][position];
+    }
+    
+    return this.CalculateRow(checkString);
+};
