@@ -1,9 +1,9 @@
-/**
+/**==================================================================================0
 * @author       Thomas Gattenhof <tom@pixeltom.net>
-* @copyright    2014 Thomas Gattenhof
+* @copyright    2015 Thomas Gattenhof
 */
 
-/**
+/**==================================================================================0
 * @namespace Picross
 */
 var Picross = Picross || {

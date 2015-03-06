@@ -1,9 +1,9 @@
-/**
+/**==================================================================================0
 * @author       Thomas Gattenhof <tom@pixeltom.net>
 * @copyright    2014 Thomas Gattenhof
 */
 
-/**
+/**==================================================================================0
 * A Tile is a single clickable tile in the Picross Grid.
 *
 * @class Picross.Tile
@@ -15,10 +15,11 @@
 
 // JSLint globals, variables defined in other files so JSLint stops warning you about them
 /*global Picross, console, Phaser, game */
-/*global beginFill, continueFill */
+
+var beginFill, continueFill;
 
 //===================================================================================0
-//
+//----- 
 //===================================================================================0
 Picross.Tile = function (game, x, y) {
     'use strict';
@@ -49,9 +50,9 @@ Picross.Tile.prototype = Object.create(Phaser.Sprite.prototype);
 Picross.Tile.prototype.constructor = Picross.Tile;
 
 //===================================================================================0
-//
+//----- 
 //===================================================================================0
-var beginFill = function (sprite, pointer) {
+beginFill = function (sprite, pointer) {
     'use strict';
     
     this.game.control.beginFill();
@@ -59,9 +60,9 @@ var beginFill = function (sprite, pointer) {
 };
 
 //===================================================================================0
-//
+//----- 
 //===================================================================================0
-var continueFill = function (sprite, pointer) {
+continueFill = function (sprite, pointer) {
     'use strict';
     
     if (!pointer.isDown) {
@@ -71,7 +72,7 @@ var continueFill = function (sprite, pointer) {
 };
 
 //===================================================================================0
-//
+//----- 
 //===================================================================================0
 Picross.Tile.prototype.attemptFill = function () {
     'use strict';

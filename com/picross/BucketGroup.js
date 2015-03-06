@@ -1,9 +1,9 @@
-/**
+/**==================================================================================0
 * @author       Thomas Gattenhof <tom@pixeltom.net>
 * @copyright    2014 Thomas Gattenhof
 */
 
-/**
+/**==================================================================================0
 * Group object, holding all Paint buckets
 * 
 * @class Picross.BucketGroup

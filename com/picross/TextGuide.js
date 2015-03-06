@@ -1,9 +1,9 @@
-/**
+/**==================================================================================0
 * @author       Thomas Gattenhof <tom@pixeltom.net>
 * @copyright    2015 Thomas Gattenhof
 */
 
-/**
+/**==================================================================================0
 * The text guide appears at the left and the top of the grid
 * Indicates what tiles occur in their row / column, and reacts when the tiles are filled in with crosses and such
 *
@@ -15,7 +15,7 @@
 /*global Picross, console, Phaser, game */
 
 //===================================================================================0
-//
+//----- 
 //===================================================================================0
 Picross.TextGuide = function (game, x, y) {
     'use strict';
