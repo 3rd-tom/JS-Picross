@@ -1,9 +1,9 @@
-/**
+/**==================================================================================0
 * @author       Thomas Gattenhof <tom@pixeltom.net>
 * @copyright    2015 Thomas Gattenhof
 */
 
-/**
+/**==================================================================================0
 * The Paintbucket is a clickable sprite that changes the colour to paint the tiles
 *
 * @class Picross.PaintBucket
@@ -13,8 +13,10 @@
 // JSLint globals, variables defined in other files so JSLint stops warning you about them
 /*global Picross, console, Phaser, game, PIXI, tileTapped */
 
+var assignColour;
+
 //===================================================================================0
-//
+//----- 
 //===================================================================================0
 Picross.PaintBucket = function (game, colour, x, y) {
     'use strict';
@@ -38,8 +40,12 @@ Picross.PaintBucket = function (game, colour, x, y) {
 Picross.PaintBucket.prototype = Object.create(Phaser.Sprite.prototype);
 Picross.PaintBucket.prototype.constructor = Picross.PaintBucket;
 
-var assignColour = function (sprite, pointer) {
-    'user strict';
+//===================================================================================0
+//----- 
+//===================================================================================0
+assignColour = function (sprite, pointer) {
+    'use strict';
+    
     console.log("this.colour" + this.colour);
     this.game.control.paintColour = this.colour;
-}
+};
