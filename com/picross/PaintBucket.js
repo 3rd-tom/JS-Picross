@@ -46,6 +46,5 @@ Picross.PaintBucket.prototype.constructor = Picross.PaintBucket;
 assignColour = function (sprite, pointer) {
     'use strict';
     
-    console.log("this.colour" + this.colour);
     this.game.control.paintColour = this.colour;
 };

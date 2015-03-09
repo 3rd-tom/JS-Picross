@@ -31,7 +31,6 @@ Picross.Tile = function (game, x, y) {
 	this.gridY = y;
 	this.id = String(x) + '_' + String(y);
     this.inputEnabled = true;
-    this.downColour = game.utils.randomHex();
     this.lastFillID = -1;
     
     this.graph = game.add.graphics(0, 0);

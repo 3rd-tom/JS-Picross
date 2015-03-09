@@ -45,7 +45,7 @@ function create() {
     game.tileGroup = new Picross.Grid(game);
     game.tileGroup.loadGrid(game.JSON.puzzle.WIDTH, game.JSON.puzzle.HEIGHT);
     
-    game.bucketGroup = new Picross.BucketGroup(game, pJson.puzzle.COLOURS);
+    game.bucketGroup = new Picross.BucketGroup(game, game.JSON.puzzle.COLOURS);
     
 }
 

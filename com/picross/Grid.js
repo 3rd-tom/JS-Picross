@@ -23,8 +23,8 @@ Picross.Grid = function (game) {
     
     Phaser.Group.call(this, game);
     
-    this.x = 100;
-    this.y = 150;
+    this.x = 130;
+    this.y = 200;
     
 	console.log('Picross.Grid constructed.');
 
@@ -40,21 +40,19 @@ Picross.Grid.prototype.loadGrid = function (width, height) {
     'use strict';
     
     console.log('Picross.Grid.loadGrid(' + width + ', ' + height + ');');
-    var tWidth, tHeight, tile, txt;
+    var tWidth, tHeight, tile, txt, txtGuide;
     
     
     for (tHeight = 0; tHeight < height; tHeight += 1) {
         
-        txt = this.game.add.text(-50, 10 + (50 * tHeight), String(tHeight), {}, this);
-        //game.control.CalculateRow(game.JSON.puzzle.GRID[tHeight]);
-        
-        
+        txtGuide = new Picross.TextGuide(this.game, -50, 10 + (50 * tHeight), game.JSON.puzzle.GRID, true, tHeight);
+        this.addChild(txtGuide);
         
         for (tWidth = 0; tWidth < width; tWidth += 1) {
             
             if (tHeight === 0) {
-                txt = this.game.add.text(17 + (50 * tWidth), -50, String(tWidth), {}, this);
-                game.control.CalculateColumn(game.JSON.puzzle.GRID, tWidth);
+                txtGuide = new Picross.TextGuide(this.game, 17 + (50 * tWidth), -50, game.JSON.puzzle.GRID, false, tWidth);
+                this.addChild(txtGuide);
             }
             
             tile = new Picross.Tile(this.game, 50 * tWidth, 50 * tHeight);
