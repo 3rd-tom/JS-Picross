@@ -21,7 +21,7 @@ var beginFill, continueFill;
 //===================================================================================0
 //----- 
 //===================================================================================0
-Picross.Tile = function (game, x, y) {
+Picross.Tile = function (game, x, y, targetColour, refTop, refLeft) {
     'use strict';
     
     Phaser.Sprite.call(this, game, x, y);
@@ -32,6 +32,9 @@ Picross.Tile = function (game, x, y) {
 	this.id = String(x) + '_' + String(y);
     this.inputEnabled = true;
     this.lastFillID = -1;
+    this.targetColour = targetColour;
+    this.refTop = refTop;
+    this.refLeft = refLeft;
     
     this.graph = game.add.graphics(0, 0);
     this.graph.lineStyle(2, 0x000000);
@@ -39,7 +42,11 @@ Picross.Tile = function (game, x, y) {
     this.graph.drawRect(0, 0, 50, 50);
     this.graph.endFill();
     
+    this.cross = game.add.sprite(0, 0, 'cross');
+    this.cross.visible = false;
+    
     this.addChild(this.graph);
+    this.addChild(this.cross);
     
     this.events.onInputDown.add(beginFill, this);
     this.events.onInputOver.add(continueFill, this);
@@ -84,6 +91,10 @@ Picross.Tile.prototype.attemptFill = function () {
         this.graph.tint = this.game.control.paintColour;
     }
     
+    this.cross.visible = this.game.control.paintColour !== this.targetColour;
     this.lastFillID = this.game.control.fillID;
+    
+    this.refTop.onChange();
+    this.refLeft.onChange();
 };
 

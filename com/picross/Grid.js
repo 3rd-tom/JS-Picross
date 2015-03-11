@@ -40,22 +40,22 @@ Picross.Grid.prototype.loadGrid = function (width, height) {
     'use strict';
     
     console.log('Picross.Grid.loadGrid(' + width + ', ' + height + ');');
-    var tWidth, tHeight, tile, txt, txtGuide;
+    var tWidth, tHeight, tile, txt, topGuide, leftGuide;
     
     
     for (tHeight = 0; tHeight < height; tHeight += 1) {
         
-        txtGuide = new Picross.TextGuide(this.game, -50, 10 + (50 * tHeight), game.JSON.puzzle.GRID, true, tHeight);
-        this.addChild(txtGuide);
+        leftGuide = new Picross.TextGuide(this.game, -50, 10 + (50 * tHeight), game.JSON.puzzle.GRID, true, tHeight);
+        this.addChild(leftGuide);
         
         for (tWidth = 0; tWidth < width; tWidth += 1) {
             
             if (tHeight === 0) {
-                txtGuide = new Picross.TextGuide(this.game, 17 + (50 * tWidth), -50, game.JSON.puzzle.GRID, false, tWidth);
-                this.addChild(txtGuide);
+                topGuide = new Picross.TextGuide(this.game, 17 + (50 * tWidth), -50, game.JSON.puzzle.GRID, false, tWidth);
+                this.addChild(topGuide);
             }
             
-            tile = new Picross.Tile(this.game, 50 * tWidth, 50 * tHeight);
+            tile = new Picross.Tile(this.game, 50 * tWidth, 50 * tHeight, game.JSON.puzzle.COLOURS[game.JSON.puzzle.GRID[tHeight].charAt(tWidth)], topGuide, leftGuide);
             this.addChild(tile);
         }
     }

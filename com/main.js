@@ -22,6 +22,8 @@ function onPreload() {
     
     //game.load.image('tick', 'lib/yesButton.png'); <-- Example of loading image
     game.load.text('puzzle1', 'lib/puzzles/1.json');
+    game.load.image('cross', 'lib/UI/cross.png');
+    game.load.image('tick', 'lib/UI/checkmark.png');
 }
 
 //******************************************************************************************************

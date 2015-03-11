@@ -24,6 +24,9 @@ Picross.TextGuide = function (game, x, y, grid, isRow, position) {
     
     Phaser.Sprite.call(this, game, x, y);
     
+    this.crosses = [];
+    this.ticks = [];
+    
     if (isRow) {
         this.CalculateRow(game.JSON.puzzle.GRID[position]);
         buildRow(this);
@@ -43,7 +46,7 @@ Picross.TextGuide.prototype.constructor = Picross.TextGuide;
 buildRow = function (ref) {
     'use strict';
     
-    var i, txt, colour, circle;
+    var i, txt, colour, circle, cross, tick;
     
     ref.x -= countArray.length * 17;
     
@@ -68,14 +71,32 @@ buildRow = function (ref) {
             circle.visible = false;
         }
         
+        cross = game.add.sprite((i * 30) - 6, 0, 'cross');
+        cross.scale.x = 0.5;
+        cross.scale.y = 0.5;
+        cross.tint = 0xFF0000;
+        ref.crosses.push(cross);
+        
+        tick = game.add.sprite((i * 30) - 6, 0, 'tick');
+        tick.scale.x = 0.5;
+        tick.scale.y = 0.5;
+        tick.tint = 0x00FF00;
+        ref.crosses.push(tick);
+        
         if (countArray[i] >= 10) {
             txt.x -= 8;
         }
         
-        ref.addChild(txt);
         if (txt.text === '0') {
             txt.alpha = 0.5;
         }
+        
+        cross.visible = false;
+        tick.visible = false;
+        
+        ref.addChild(txt);
+        ref.addChild(cross);
+        ref.addChild(tick);
     }
 };
 
@@ -85,7 +106,7 @@ buildRow = function (ref) {
 buildColumn = function (ref) {
     'use strict';
     
-    var i, txt, colour, circle;
+    var i, txt, colour, circle, cross, tick;
     
     ref.y -= countArray.length * 23;
     
@@ -110,15 +131,32 @@ buildColumn = function (ref) {
             circle.visible = false;
         }
         
+        cross = game.add.sprite(-6, (i * 35), 'cross');
+        cross.scale.x = 0.5;
+        cross.scale.y = 0.5;
+        cross.tint = 0xFF0000;
+        ref.crosses.push(cross);
+        
+        tick = game.add.sprite(-6, (i * 35), 'tick');
+        tick.scale.x = 0.5;
+        tick.scale.y = 0.5;
+        tick.tint = 0x00FF00;
+        ref.crosses.push(tick);
+        
         if (countArray[i] >= 10) {
             txt.x -= 8;
         }
         
-        
-        ref.addChild(txt);
         if (txt.text === '0') {
             txt.alpha = 0.5;
         }
+        
+        cross.visible = false;
+        tick.visible = false;
+        
+        ref.addChild(txt);
+        ref.addChild(cross);
+        ref.addChild(tick);
     }
     
 };
@@ -182,4 +220,14 @@ Picross.TextGuide.prototype.CalculateColumn = function (input, position) {
     this.CalculateRow(checkString);
     
     //return this.CalculateRow(checkString);
+};
+
+//===================================================================================0
+//----
+//===================================================================================0
+Picross.TextGuide.prototype.onChange = function () {
+    'use strict';
+    
+    console.log('onChage called');
+    
 };
