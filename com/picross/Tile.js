@@ -24,18 +24,19 @@ var beginFill, continueFill;
 Picross.Tile = function (game, x, y, targetColour, refTop, refLeft) {
     'use strict';
     
-    Phaser.Sprite.call(this, game, x, y);
+    Phaser.Sprite.call(this, game, x * 50, y * 50);
     
     this.game = game;
 	this.gridX = x;
 	this.gridY = y;
+    this.name = "TILE" + this.gridX + "_" + this.gridY;
 	this.id = String(x) + '_' + String(y);
     this.inputEnabled = true;
     this.lastFillID = -1;
     this.targetColour = targetColour;
     this.refTop = refTop;
     this.refLeft = refLeft;
-    
+    console.log(this.name);
     this.graph = game.add.graphics(0, 0);
     this.graph.lineStyle(2, 0x000000);
     this.graph.beginFill(game.utils.WHITE);
@@ -87,14 +88,19 @@ Picross.Tile.prototype.attemptFill = function () {
         return;
     }
     
+    this.lastFillID = this.game.control.fillID;
+    
     if (this.graph.tint !== this.game.control.paintColour) {
         this.graph.tint = this.game.control.paintColour;
     }
     
-    this.cross.visible = this.game.control.paintColour !== this.targetColour;
-    this.lastFillID = this.game.control.fillID;
+    if (this.game.control.paintColour !== this.targetColour) {
+        this.cross.visible = true;
+        this.refTop.onChange(true, false);
+        this.refLeft.onChange(true, false);
+    } else {
+        this.cross.visible = false;
+    }
     
-    this.refTop.onChange();
-    this.refLeft.onChange();
 };
 

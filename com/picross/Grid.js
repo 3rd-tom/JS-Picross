@@ -40,7 +40,7 @@ Picross.Grid.prototype.loadGrid = function (width, height) {
     'use strict';
     
     console.log('Picross.Grid.loadGrid(' + width + ', ' + height + ');');
-    var tWidth, tHeight, tile, txt, topGuide, leftGuide;
+    var tWidth, tHeight, tile, txt, topGuide, leftGuide, arrayRow, arrayCol, tile;
     
     
     for (tHeight = 0; tHeight < height; tHeight += 1) {
@@ -55,8 +55,31 @@ Picross.Grid.prototype.loadGrid = function (width, height) {
                 this.addChild(topGuide);
             }
             
-            tile = new Picross.Tile(this.game, 50 * tWidth, 50 * tHeight, game.JSON.puzzle.COLOURS[game.JSON.puzzle.GRID[tHeight].charAt(tWidth)], topGuide, leftGuide);
+            tile = new Picross.Tile(this.game, tWidth, tHeight,
+                                    game.JSON.puzzle.COLOURS[game.JSON.puzzle.GRID[tHeight].charAt(tWidth)],
+                                    topGuide, leftGuide);
             this.addChild(tile);
         }
     }
+    
+    tile = this.getChildByName("TILE7_5");
+    if(tile !== null){
+        tile.x += 20;
+    }
 };
+
+//===================================================================================0
+//
+//===================================================================================0
+Picross.Grid.prototype.getChildByName = function (name) {
+    var i, tile;
+    
+    for(i = 0; i < this.children.length; i += 1) {
+        tile = this.getChildAt(i);
+        if (tile.name === name) {
+            return tile;
+        }
+    }
+    
+    return null;
+}

@@ -81,7 +81,7 @@ buildRow = function (ref) {
         tick.scale.x = 0.5;
         tick.scale.y = 0.5;
         tick.tint = 0x00FF00;
-        ref.crosses.push(tick);
+        ref.ticks.push(tick);
         
         if (countArray[i] >= 10) {
             txt.x -= 8;
@@ -141,7 +141,7 @@ buildColumn = function (ref) {
         tick.scale.x = 0.5;
         tick.scale.y = 0.5;
         tick.tint = 0x00FF00;
-        ref.crosses.push(tick);
+        ref.ticks.push(tick);
         
         if (countArray[i] >= 10) {
             txt.x -= 8;
@@ -225,9 +225,14 @@ Picross.TextGuide.prototype.CalculateColumn = function (input, position) {
 //===================================================================================0
 //----
 //===================================================================================0
-Picross.TextGuide.prototype.onChange = function () {
+Picross.TextGuide.prototype.onChange = function (showCrosses, showTicks) {
     'use strict';
     
-    console.log('onChage called');
+    var i;
+    
+    for (i = 0; i < this.crosses.length; i += 1) {
+        this.crosses[i].visible = showCrosses;
+        this.ticks[i].visible = showTicks;
+    }
     
 };
