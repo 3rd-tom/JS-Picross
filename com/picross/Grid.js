@@ -62,10 +62,10 @@ Picross.Grid.prototype.loadGrid = function (width, height) {
         }
     }
     
-    tile = this.getChildByName("TILE7_5");
+    /*tile = this.getChildByName("TILE7_5");
     if(tile !== null){
         tile.x += 20;
-    }
+    }*/
 };
 
 //===================================================================================0
